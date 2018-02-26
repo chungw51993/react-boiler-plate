@@ -44,19 +44,15 @@ const isDeveloping = process.env.NODE_ENV !== 'production';
 if (isDeveloping) {
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
-  // app.get('*', (req, res) => {
-  //   res.write(middleware.fileSystem.readFileSync(path.join(__dirname, '../dist/index.html')));
-  //   res.end();
-  // });
 } else {
 // Middleware - In production, force client to use HTTPS via redirect
-  // app.use(function(req, res, next) {
-  //   if((!req.secure) && (req.get('X-Forwarded-Proto') !== 'https')) {
-  //     res.redirect('https://' + req.get('Host') + req.url);
-  //       }
-  //   else
-  //   next();
-  // });
+  app.use(function(req, res, next) {
+    if((!req.secure) && (req.get('X-Forwarded-Proto') !== 'https')) {
+      res.redirect('https://' + req.get('Host') + req.url);
+        }
+    else
+    next();
+  });
 
   app.use(compression());
   app.use(express.static(path.join(__dirname, '../dist')));

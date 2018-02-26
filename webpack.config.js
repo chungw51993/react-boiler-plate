@@ -5,7 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 export default {
   mode: 'development',
   devtool: 'source-map',
-  entry : [
+  entry: [
     'webpack-hot-middleware/client?reload=true/__webpack_hmr',
     path.join(__dirname, 'client/index.jsx'),
   ],
@@ -41,6 +41,6 @@ export default {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
-    ]
-  }
-}
+    ],
+  },
+};
