@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import TestContainer from './../containers/TestContainer';
+
 class Test extends Component {
   render() {
     return (
@@ -10,4 +12,4 @@ class Test extends Component {
   }
 }
 
-export default Test;
+export default TestContainer(Test);
