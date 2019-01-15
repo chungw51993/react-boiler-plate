@@ -4,17 +4,12 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import Router from './router.jsx';
-import createStore from './store/createStore';
 
 import './styles/base.scss';
 
-const store = createStore();
-
 const wrapper = element => (
   <BrowserRouter>
-    <Provider store={store}>
-      { element }
-    </Provider>
+    { element }
   </BrowserRouter>
 );
 
